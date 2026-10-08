@@ -301,27 +301,61 @@ Not: Bu sıra bir **altyapı sırasıdır**, bir "hangi kaynak değerli" sırala
 
 ## 6. (b) Kullanıcıya açık sorular
 
+> Bu bölümdeki maddelerden bazıları yanıtlanmıştır; kararlar `KULLANICI KARARI` etiketiyle
+> ilgili sorunun altına işlenmiştir. Etiketsiz kalan maddeler hâlâ açık sorudur.
+
 1. **Sağlayıcı seçimi:** Somut sağlayıcı listesini kim ve hangi yazılı mekanik kurala göre
    onaylayacak? (Ajan bu seçimi yapmaz `KURAL`.)
+   - **KULLANICI KARARI:** Sağlayıcı seçimini **yalnızca kullanıcı** onaylar. Ajanın onayı
+     geçerli sayılmaz; ajan sağlayıcı seçemez, öneremez ve bu konuda karar veremez.
 2. **Lisans doğrulaması:** Lisans/erişim koşulları hangi kanıtla (ekran görüntüsü, kayıtlı metin,
    tarih) ve kim tarafından doğrulanacak? `verified_by` / `verified_at` alanlarını kim doldurur?
+   - **KULLANICI KARARI:** Kaynak doğrulaması (lisans, erişim, zaman damgası güvenilirliği)
+     **kullanıcı ve Claude web araması** ile yapılır. Ajan doğrulama için **ağa çıkmaz**; ajanın
+     doğrulama yargısı geçerli sayılmaz. `verified_by` / `verified_at` alanlarını kullanıcı
+     doldurur.
 3. **Ücretli kaynaklar:** Abonelik/ücret gerektiren kaynaklar (özellikle 3.3 ve 3.4) kabul
    edilecek mi? Bütçe ve yeniden dağıtım kısıtı politikası nedir?
+   - **KULLANICI KARARI:** Ücretli/abonelik gerektiren kaynak **şimdilik yoktur**; yalnızca
+     açık ve ücretsiz kaynaklar kullanılır.
 4. **Vintage yoksa:** Bir seri için vintage bulunamazsa tümden mi dışlanacak, yoksa
    "cutoff anında yayımlandığı kanıtlanan tek bir sürüm" yeterli mi?
+   - **KULLANICI KARARI:** Bir serinin **ilk yayımlanan değeri kanıtlanamıyorsa o seri
+     alınmaz**. İstisna yoktur; bu, K2 kriterinin fail-closed uygulanmasıdır.
 5. **Ham kopya saklama:** Telifli içerikte ham kopya saklamak (kanıt için) kabul edilecek mi;
    depolama hacmi ve saklama süresi politikası ne olacak?
+   - **KULLANICI KARARI:** Ham veri **yalnızca yerelde** tutulur ve **git dışında** kalır
+     (`data/` zaten ignore edilmiş durumda). **Yeniden dağıtım yapılmaz.**
 6. **Düzeltilmiş metinler:** Tutanak/transkript düzeltmelerinde "ilk yayın" hangi sürüm sayılır?
+   - **KULLANICI KARARI (ilk yayın):** "İlk yayın", belgenin kamuya açıldığı **ilk damgalı
+     sürümdür**. Sonraki düzeltmeler ayrı kayıttır ve kendi düzeltme tarihleri `available_time`
+     olur.
+   - **KULLANICI KARARI (düzeltilmiş belgeler):** Düzeltilmiş bir belgede düzeltmenin kendi
+     tarihi `available_time` değeridir; **orijinal sürüm ayrı kayıt olarak kalır** (silinmez,
+     üzerine yazılmaz).
 7. **Bar/zaman dilimi kuralı:** `available_time` = bar kapanışı kabulü onaylanıyor mu; tüm
    zamanlar UTC mi olacak (config'te UTC yazıyor, onay gerekiyor)?
+   - **KULLANICI KARARI:** **Tüm zamanlar UTC'ye çevrilir.** Kaynağın yerel saati ve saat dilimi
+     kuralı kayıtta saklanır; **saat dilimi belirsizse kayıt alınmaz**. Piyasa verisinde
+     `available_time` = **bar kapanış anı**; bar başlangıcı **hiçbir koşulda** kullanılmaz.
 8. **Cutoff anının kesinliği:** `2010-12-31` cutoff'u gün sonu (23:59:59 UTC) olarak mı
    yorumlanacak? Farklı yorum, sınır kayıtların kabul/red kararını değiştirir.
+   - **KULLANICI KARARI:** Bir kayıt yalnızca `available_time < 2011-01-01T00:00:00Z` ise
+     alınır. **Saat dilimi belirsizse kayıt alınmaz.** Buradaki ifade, cutoff'un kesin sınır
+     anıdır; cutoff sonrası bir olaya veya sonuca ilişkin hiçbir bilgi içermez.
 9. **Kapsam dışı kararı:** 3.4 ve 3.8 (ve gerekirse 3.6) için "kapsam dışı" kararını kim,
    hangi yazılı gerekçeyle verir?
+   - **KULLANICI KARARI:** Kapsam dışı bırakma kararını **yalnızca kullanıcı** onaylar; ajanın
+     kararı geçerli sayılmaz. Gerekçe yazılıdır ve yalnızca K1–K4 kriterlerine dayanır.
 10. **Kapsama boşlukları:** Bir dönem için hiç kaynak yoksa bu, rapora "boşluk" olarak mı
     yazılacak, yoksa o dönem için tahmin üretimi duracak mı?
+    - **KULLANICI KARARI:** Kaynağı olmayan alan/dönem **"boşluk" olarak raporlanır**. Bu
+      alanlarda **soru üretilmez ve tahmin yapılmaz**; model eksik bilgiyle uydurmaya
+      zorlanmaz.
 11. **Yeniden kullanım:** Bu envanterin gerçek kayıtlarla (satırlarla) doldurulması için
     hangi aşamada izin veriliyor? (Şu an yalnızca şablon ve kriterler var.)
+    - **KULLANICI KARARI:** Envanter satırlarının doldurulması **yalnızca kullanıcının ayrı ve
+      açık izninden sonra** yapılır. Bu belge o izni vermez.
 
 ---
 
@@ -331,5 +365,34 @@ Not: Bu sıra bir **altyapı sırasıdır**, bir "hangi kaynak değerli" sırala
   değildir**; hepsi `DOĞRULANMADI`.
 - Bu belge **veri içermez**, veri çekmez, veri çekme izni vermez.
 - Bu belge hiçbir model girdisine girmez; cutoff anındaki model bunu görmez.
-- Sonraki adım: kullanıcı §6'daki soruları yanıtladıktan sonra, envanter satırları K1–K4
-  kriterlerine göre **kod tarafından** doldurulur; seçim ajana bırakılmaz.
+- Sonraki adım: envanter satırları K1–K4 kriterlerine göre **kod tarafından** doldurulur;
+  seçim ajana bırakılmaz. Doldurma, **yalnızca kullanıcının ayrı ve açık izniyle** başlar
+  (bkz. §6.11 kararı).
+
+---
+
+## 8. Eşleşmeyen kararlar
+
+İşlenen 10 kararın tamamı §6'daki bir soruyla eşleşti; **eşleşmeyen karar yoktur.**
+
+| Karar (konu) | İşlendiği soru |
+|---|---|
+| 1 — Cutoff yorumu (`available_time < 2011-01-01T00:00:00Z`) | §6.8 |
+| 2 — Vintage kanıtı yoksa seri alınmaz | §6.4 |
+| 3 — Ücretli kaynak yok | §6.3 |
+| 4 — Ham veri yerelde, git dışında | §6.5 |
+| 5 — Düzeltilmiş belgeler / düzeltme tarihi | §6.6 |
+| 6 — Kaynak doğrulaması ve onay yetkisi (kullanıcı) | §6.1, §6.2, §6.9 |
+| 7 — Envanter satırlarının doldurulması izni | §6.11 |
+| 8 — Zaman: UTC + yerel saat kaydı + bar kapanışı | §6.7 |
+| 9 — "İlk yayın" tanımı | §6.6 |
+| 10 — Boşlukların raporlanması | §6.10 |
+
+---
+
+## 9. Sonraki aşama için ilke (KULLANICI KARARI)
+
+Değerlendirme soruları (ör. "X merkez bankası toplantısında faiz değişir mi?") **cevap
+anahtarına bakılarak** veya **"ilginç olaylar" seçilerek** üretilmez. Sorular **takvim/şablondan
+MEKANİK** olarak üretilir: şablona uyan her örnek soruya dönüşür. Böylece hindsight ile soru
+seçme kaynaklı seçim sızıntısı engellenir.
