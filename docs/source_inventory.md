@@ -92,12 +92,12 @@ açılmıştır. Sağlayıcı adı dışındaki hiçbir alan kaynaktan okunmamı
 | `coverage_end` | DOĞRULANMADI — kaynaktan okunmadı |
 | `timestamp_field` | DOĞRULANMADI — kaynaktan okunmadı |
 | `timestamp_precision` | DOĞRULANMADI — kaynaktan okunmadı |
-| `vintage_available` | DOĞRULANMADI — kaynaktan okunmadı |
-| `retro_edit_risk` | DOĞRULANMADI — kaynaktan okunmadı |
+| `vintage_available` | `DOĞRULANMADI` |
+| `retro_edit_risk` | `DOĞRULANMADI` |
 | `access_method` | DOĞRULANMADI — kaynaktan okunmadı |
 | `licence_status` | `DOĞRULANMADI` |
 | `leakage_risk` | `dusuk` (ön değer — §3.2 ön değerlendirmesi) |
-| `mitigation` | §3.2 önlemi (ön değer): ilk yayın artefaktının ham kopyası + içerik hash'i; sonraki sürümler ayrı kayıt; cutoff sonrası sürümler havuza alınmaz |
+| `mitigation` | `DOĞRULANMADI` |
 | `verification_status` | `DOĞRULANMADI` |
 | `verified_by` | (boş) |
 | `verified_at` | (boş) |
@@ -124,12 +124,12 @@ açılmıştır. Sağlayıcı adı dışındaki hiçbir alan kaynaktan okunmamı
 | `coverage_end` | DOĞRULANMADI — kaynaktan okunmadı |
 | `timestamp_field` | DOĞRULANMADI — kaynaktan okunmadı |
 | `timestamp_precision` | DOĞRULANMADI — kaynaktan okunmadı |
-| `vintage_available` | DOĞRULANMADI — kaynaktan okunmadı |
-| `retro_edit_risk` | DOĞRULANMADI — kaynaktan okunmadı |
+| `vintage_available` | `DOĞRULANMADI` |
+| `retro_edit_risk` | `DOĞRULANMADI` |
 | `access_method` | DOĞRULANMADI — kaynaktan okunmadı |
 | `licence_status` | `DOĞRULANMADI` |
 | `leakage_risk` | `dusuk` (ön değer — §3.2 ön değerlendirmesi) |
-| `mitigation` | §3.2 önlemi (ön değer): ilk yayın artefaktının ham kopyası + içerik hash'i; sonraki sürümler ayrı kayıt; cutoff sonrası sürümler havuza alınmaz |
+| `mitigation` | `DOĞRULANMADI` |
 | `verification_status` | `DOĞRULANMADI` |
 | `verified_by` | (boş) |
 | `verified_at` | (boş) |
@@ -142,9 +142,6 @@ açılmıştır. Sağlayıcı adı dışındaki hiçbir alan kaynaktan okunmamı
   dokümanın kendi damgasından alınmalıdır; bugünkü sayfa tarihi kullanılmaz."
 - "ECB karar saati bugünkü uygulamadan farklı olabilir; saat 2010 tarihli bildirimlerin
   kendisinden okunacak."
-
-> Not: Her iki kayıt da **K4 gereği havuza alınmaz** (`licence_status` = `DOĞRULANMADI`).
-> Bu satırlar bir *pilot/şablon* denemesidir; veri çekme izni vermez (§6.11 kararı).
 
 ---
 
