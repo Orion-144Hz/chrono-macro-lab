@@ -111,6 +111,9 @@ açılmıştır. Sağlayıcı adı dışındaki hiçbir alan kaynaktan okunmamı
 - "Kaynak sayfaların bugünkü hâli (güncelleme tarihleri 2022-2024) cutoff anındaki hâlini temsil
   etmez. Zaman damgaları ve içerik, cutoff öncesi tarihli arşiv kopyalarından veya orijinal
   dokümanın kendi damgasından alınmalıdır; bugünkü sayfa tarihi kullanılmaz."
+- **Kanıt kaynağı (kullanıcı/Claude tarafından sağlandı, ajan açmadı):**
+  `federalreserve.gov/monetarypolicy/files/FOMC20160111memo01.pdf` — Fed iç yazışması;
+  transkriptlerin 5 yıl sonra yayımlanması.
 
 **`SRC-0002` — category 2**
 
@@ -137,9 +140,8 @@ açılmıştır. Sağlayıcı adı dışındaki hiçbir alan kaynaktan okunmamı
 `notes` (kullanıcı tarafından aynen aktarıldı):
 
 - "ECB için güncel telif/yeniden kullanım şartları bulunamadı: DOĞRULANMADI."
-- "Kaynak sayfaların bugünkü hâli (güncelleme tarihleri 2022-2024) cutoff anındaki hâlini temsil
-  etmez. Zaman damgaları ve içerik, cutoff öncesi tarihli arşiv kopyalarından veya orijinal
-  dokümanın kendi damgasından alınmalıdır; bugünkü sayfa tarihi kullanılmaz."
+- "Kaynak sayfaların bugünkü hâli cutoff anındaki hâlini temsil etmez; ECB sayfalarının
+  güncelleme tarihleri kontrol edilmedi."
 - "ECB karar saati bugünkü uygulamadan farklı olabilir; saat 2010 tarihli bildirimlerin
   kendisinden okunacak."
 
@@ -203,11 +205,16 @@ düzenlenme riski, erişim/lisans, sızıntı riski + önlem. **Tüm içerik bil
 
 #### Kapsam dışı alt kümeler (cutoff 2010)
 
-`DOĞRULANMADI` — kullanıcı notu; gecikme süresi kaynaktan doğrulanmadı.
+**Claude web araması bulgusu (2026-10-08), insan doğrulaması BEKLİYOR.**
 
-- FOMC transkriptleri ve staff dokümanları uzun gecikmeyle yayımlandığı için toplantı tarihine
-  göre değil, **yalnızca gerçek yayın tarihine göre** değerlendirilir; yayın tarihi cutoff
-  sonrasıysa havuza **girmez**.
+- FOMC transkriptleri yaklaşık **5 yıl** gecikmeyle yayımlanır.
+- Tealbook/Greenbook (Bluebook ile Haziran 2010'da birleşti) personel tahminleri yaklaşık
+  **5 yıl** sonra yayımlanır.
+- Bu dokümanlar 2010 cutoff'u için **KAPSAM DIŞI**: toplantı tarihine değil, **gerçek yayın
+  tarihine** bakılır; yayın tarihi cutoff sonrasıdır, dolayısıyla havuza **girmez**.
+- `SRC-0001` kapsamındaki **tutanaklar** karardan yaklaşık **3 hafta** sonra, **politika
+  açıklamaları** toplantıdan sonra yayımlanır: `available_time` ≠ toplantı tarihi; bu fark her
+  kayıtta ayrı tutulur.
 
 ### 3.3 Piyasa fiyat serileri (döviz, faiz, tahvil getirisi, emtia)
 
