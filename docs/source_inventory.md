@@ -75,6 +75,77 @@ değildir.
 | `verified_by` / `verified_at` | metin / tarih | Doğrulayan insan ve tarih |
 | `notes` | metin | Açık sorular, belirsizlikler |
 
+### 2.1 Pilot kayıtlar (kullanıcı kararı ile açıldı)
+
+Kayıtlar §6.1'deki kullanıcı kararıyla, **yalnızca sağlayıcı adı ve kapsam** bilgisiyle
+açılmıştır. Sağlayıcı adı dışındaki hiçbir alan kaynaktan okunmamıştır; tahmin yürütülmemiştir.
+
+**`SRC-0001` — category 2**
+
+| Alan | Değer |
+|---|---|
+| `inventory_id` | `SRC-0001` |
+| `category` | 2 — Merkez bankası faiz kararları, açıklamaları, tutanakları |
+| `provider_name` | ABD Merkez Bankası Federal Reserve Board (FOMC politika açıklamaları ve tutanaklar) |
+| `content_scope` | FOMC politika açıklamaları ve tutanaklar (§6.1 kullanıcı kararı) |
+| `coverage_start` | DOĞRULANMADI — kaynaktan okunmadı |
+| `coverage_end` | DOĞRULANMADI — kaynaktan okunmadı |
+| `timestamp_field` | DOĞRULANMADI — kaynaktan okunmadı |
+| `timestamp_precision` | DOĞRULANMADI — kaynaktan okunmadı |
+| `vintage_available` | DOĞRULANMADI — kaynaktan okunmadı |
+| `retro_edit_risk` | DOĞRULANMADI — kaynaktan okunmadı |
+| `access_method` | DOĞRULANMADI — kaynaktan okunmadı |
+| `licence_status` | `DOĞRULANMADI` |
+| `leakage_risk` | `dusuk` (ön değer — §3.2 ön değerlendirmesi) |
+| `mitigation` | §3.2 önlemi (ön değer): ilk yayın artefaktının ham kopyası + içerik hash'i; sonraki sürümler ayrı kayıt; cutoff sonrası sürümler havuza alınmaz |
+| `verification_status` | `DOĞRULANMADI` |
+| `verified_by` | (boş) |
+| `verified_at` | (boş) |
+
+`notes` (kullanıcı tarafından aynen aktarıldı):
+
+- "Kullanıcı, Federal Reserve Board sitesinin kullanım notlarını (lisans) sayfada bulamadığını
+  bildirdi. Claude (web araması, kullanıcı tarafından aktarıldı) Board sitesinin içeriğinin aksi
+  belirtilmedikçe kamu malı olduğunu bildiren bir metin gördüğünü söyledi; bu bilgi insan
+  tarafından DOĞRULANMADI, bu nedenle K4 gereği havuza alınmaz."
+- "Kaynak sayfaların bugünkü hâli (güncelleme tarihleri 2022-2024) cutoff anındaki hâlini temsil
+  etmez. Zaman damgaları ve içerik, cutoff öncesi tarihli arşiv kopyalarından veya orijinal
+  dokümanın kendi damgasından alınmalıdır; bugünkü sayfa tarihi kullanılmaz."
+
+**`SRC-0002` — category 2**
+
+| Alan | Değer |
+|---|---|
+| `inventory_id` | `SRC-0002` |
+| `category` | 2 — Merkez bankası faiz kararları, açıklamaları, tutanakları |
+| `provider_name` | Avrupa Merkez Bankası (ECB) para politikası karar bildirimleri |
+| `content_scope` | ECB para politikası karar bildirimleri (§6.1 kullanıcı kararı) |
+| `coverage_start` | DOĞRULANMADI — kaynaktan okunmadı |
+| `coverage_end` | DOĞRULANMADI — kaynaktan okunmadı |
+| `timestamp_field` | DOĞRULANMADI — kaynaktan okunmadı |
+| `timestamp_precision` | DOĞRULANMADI — kaynaktan okunmadı |
+| `vintage_available` | DOĞRULANMADI — kaynaktan okunmadı |
+| `retro_edit_risk` | DOĞRULANMADI — kaynaktan okunmadı |
+| `access_method` | DOĞRULANMADI — kaynaktan okunmadı |
+| `licence_status` | `DOĞRULANMADI` |
+| `leakage_risk` | `dusuk` (ön değer — §3.2 ön değerlendirmesi) |
+| `mitigation` | §3.2 önlemi (ön değer): ilk yayın artefaktının ham kopyası + içerik hash'i; sonraki sürümler ayrı kayıt; cutoff sonrası sürümler havuza alınmaz |
+| `verification_status` | `DOĞRULANMADI` |
+| `verified_by` | (boş) |
+| `verified_at` | (boş) |
+
+`notes` (kullanıcı tarafından aynen aktarıldı):
+
+- "ECB için güncel telif/yeniden kullanım şartları bulunamadı: DOĞRULANMADI."
+- "Kaynak sayfaların bugünkü hâli (güncelleme tarihleri 2022-2024) cutoff anındaki hâlini temsil
+  etmez. Zaman damgaları ve içerik, cutoff öncesi tarihli arşiv kopyalarından veya orijinal
+  dokümanın kendi damgasından alınmalıdır; bugünkü sayfa tarihi kullanılmaz."
+- "ECB karar saati bugünkü uygulamadan farklı olabilir; saat 2010 tarihli bildirimlerin
+  kendisinden okunacak."
+
+> Not: Her iki kayıt da **K4 gereği havuza alınmaz** (`licence_status` = `DOĞRULANMADI`).
+> Bu satırlar bir *pilot/şablon* denemesidir; veri çekme izni vermez (§6.11 kararı).
+
 ---
 
 ## 3. Kategoriler
@@ -132,6 +203,14 @@ düzenlenme riski, erişim/lisans, sızıntı riski + önlem. **Tüm içerik bil
   olan bilginin en temiz örneğidir; risk esas olarak sonraki sürümlerden gelir. *Önlem:* ilk
   yayın artefaktının ham kopyası + içerik hash'i saklanır; sonraki sürümler ayrı kayıt olarak
   tutulur ve cutoff sonrası sürümler havuza alınmaz.
+
+#### Kapsam dışı alt kümeler (cutoff 2010)
+
+`DOĞRULANMADI` — kullanıcı notu; gecikme süresi kaynaktan doğrulanmadı.
+
+- FOMC transkriptleri ve staff dokümanları uzun gecikmeyle yayımlandığı için toplantı tarihine
+  göre değil, **yalnızca gerçek yayın tarihine göre** değerlendirilir; yayın tarihi cutoff
+  sonrasıysa havuza **girmez**.
 
 ### 3.3 Piyasa fiyat serileri (döviz, faiz, tahvil getirisi, emtia)
 
@@ -308,6 +387,11 @@ Not: Bu sıra bir **altyapı sırasıdır**, bir "hangi kaynak değerli" sırala
    onaylayacak? (Ajan bu seçimi yapmaz `KURAL`.)
    - **KULLANICI KARARI:** Sağlayıcı seçimini **yalnızca kullanıcı** onaylar. Ajanın onayı
      geçerli sayılmaz; ajan sağlayıcı seçemez, öneremez ve bu konuda karar veremez.
+   - **KULLANICI KARARI (2026-10-08) — pilot sağlayıcılar:** Pilot sağlayıcılar kullanıcı
+     tarafından seçildi: **(a)** ABD Merkez Bankası Federal Reserve Board (FOMC politika
+     açıklamaları ve tutanaklar); **(b)** Avrupa Merkez Bankası (ECB) para politikası karar
+     bildirimleri. Envanter kayıtları: `SRC-0001` (a), `SRC-0002` (b) — bkz. §2.1. Seçim
+     kullanıcıya aittir; ajan seçim yapmamıştır.
 2. **Lisans doğrulaması:** Lisans/erişim koşulları hangi kanıtla (ekran görüntüsü, kayıtlı metin,
    tarih) ve kim tarafından doğrulanacak? `verified_by` / `verified_at` alanlarını kim doldurur?
    - **KULLANICI KARARI:** Kaynak doğrulaması (lisans, erişim, zaman damgası güvenilirliği)
