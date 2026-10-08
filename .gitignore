@@ -1,0 +1,26 @@
+# =============================================================================
+# Chrono-Macro-Lab — .gitignore
+# =============================================================================
+# Veri bölgelerinin İÇERİĞİ yok sayılır; klasör yapısı .gitkeep ile takipte kalır.
+# (Zaman filtresi/veri hattı gelene kadar bu dizinlerde gerçek veri yoktur.)
+# =============================================================================
+
+# --- Veri bölgeleri -----------------------------------------------------------
+data/raw/*
+!data/raw/.gitkeep
+
+data/pit/*
+!data/pit/.gitkeep
+
+data/answer_key/*
+!data/answer_key/.gitkeep
+
+# --- Python -------------------------------------------------------------------
+__pycache__/
+.pytest_cache/
+.venv/
+
+# --- Geçici dosyalar ve araç artıkları ----------------------------------------
+*.tmp
+*.tmpdir
+.l2s*
